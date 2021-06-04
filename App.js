@@ -3,23 +3,16 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 export default function App() {
-  const [pessoa, setPessoa] = useState({
-    nome: "Elias Fernandes",
-    altura: 1.92,
-    idade: 30,
-    estado: "Paraná",
-  });
-
   return (
-    <View style={styles.container}>
-      <Text>{pessoa.nome}</Text>
-      <Text>{pessoa.idade}</Text>
-      <Button
-        title="click"
-        onPress={() => {
-          setPessoa({ ...pessoa, nome: "Jhess", idade: 27 });
-        }}
-      />
+    <View style={{padding: 50}}>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+        <TextInput placeholder='Insira aqui suas metas'
+         style={{width: '80%', borderColor: 'black', borderWidth: 1, padding: 10}}/>
+        <Button title="ADD" />
+      </View>
+      <View>
+
+      </View>
     </View>
   );
 }
