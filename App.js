@@ -3,25 +3,48 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 export default function App() {
+  const [meta, setMeta] = useState("");
+  const [metaCurso, setMetaCurso] = useState([]);
+
+  const entradaMeta = (textoInserido) => {
+    setMeta(textoInserido);
+  };
+
+  const adicionarMeta = ()=>{
+    setMetaCurso(metasAtuais => [...metasAtuais, meta])
+   
+  } 
+
   return (
-    <View style={{padding: 50}}>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
-        <TextInput placeholder='Insira aqui suas metas'
-         style={{width: '80%', borderColor: 'black', borderWidth: 1, padding: 10}}/>
-        <Button title="ADD" />
+    <View style={styles.screen}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Insira aqui suas metas"
+          style={styles.input}
+          onChangeText={entradaMeta} value={meta}
+        />
+        <Button title="ADD" onPress={adicionarMeta} />
       </View>
       <View>
-
+        {metaCurso.map((meta) => <Text key={meta}> {meta}</Text>)}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
+  screen: {
+    padding: 50,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
+  },
+  input: {
+    width: "80%",
+    borderColor: "black",
+    borderWidth: 1,
+    padding: 10,
   },
 });
